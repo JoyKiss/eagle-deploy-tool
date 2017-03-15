@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Strom集群重启 -->
+<job name="storm_restart" description="restart storm">
+	<workflow>
+	    <step includeJob="storm_stop" />
+	    <step includeJob="storm_start" />
+	</workflow>
+</job>

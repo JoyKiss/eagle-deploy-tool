@@ -1,0 +1,2 @@
+2016-09-09 09:38:39,228 - jenkins.plugins.ssh2easy.gssh.client.JenkinsSshClient -0    [main] INFO   - create ssh session success with ip=[192.168.154.2],port=[22],username=[root],password=[*******]
+2016-09-09 09:39:20,598 - jenkins.plugins.ssh2easy.gssh.client.JenkinsSshClient -0    [main] INFO   - create ssh session success with ip=[192.168.154.2],port=[22],username=[root],password=[*******]

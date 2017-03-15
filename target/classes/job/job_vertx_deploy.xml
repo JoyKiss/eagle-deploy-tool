@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 部署eagle-push.zip文件并重启Vertx -->
+<job name="vertx_deploy" description="deploy Vertx and restart">
+	<workflow>
+	    <step includeJob="vertx_stop" />
+	    <step includeJob="vertx_upload" />
+	    <step includeJob="vertx_start" />
+	</workflow>
+</job>

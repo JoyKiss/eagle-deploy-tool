@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  部署DBF行情网关并重启JOB -->
+<job name="gateway_dbf_deploy" description="deploy and restart dfb_getway">
+	<workflow>
+	    <step includeJob="gateway_dbf_stop" />
+	    <step includeJob="gateway_dbf_upload" />
+	    <step includeJob="gateway_dbf_start" />
+	</workflow>
+</job>

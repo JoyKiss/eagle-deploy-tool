@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 深证V5行情网关停止JOB -->
+<job name="gateway_step_stop" description="stop step_getway">
+	<workflow>
+		<step name="stop_market_step" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor" description="关闭行情DBF网关">
+			<server-ref name="gateway1,gateway2"/>
+				<shell>pkill -9 -f StepServer</shell>
+		</step>
+	</workflow>
+</job>

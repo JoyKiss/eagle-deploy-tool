@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 启动Tomcat -->
+<job name="tomcat_start" description="start tomcate">
+	<workflow>
+	    <step name="start_tomcat" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="tomcat1,tomcat2"/>
+				<shell>cd ${tomcat.home}/bin
+./startup.sh
+				</shell>
+		</step>
+	</workflow>
+</job>

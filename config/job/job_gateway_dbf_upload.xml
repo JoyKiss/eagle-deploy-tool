@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 行情DBF网关部署文件上传JOB -->
+<job name="gateway_dbf_upload" description="upload dbf_getway">
+	<workflow>
+		<step name="upload_gateway_dbf"
+			class="com.linkstec.raptor.eagle.tool.step.UploadStepExecutor" description="上传market-dbf.zip文件">
+			<server-ref name="gateway1,gateway2"/>
+			<upload srcFile="${workspace.path}/market-dbf.zip"  destPath="/tmp" />
+		</step>
+		<step name="unzip_gateway_dbf" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor" description="解压缩market-dbf.zip文件">
+			<server-ref name="gateway1,gateway2"/>
+				<shell>mkdir -p ${eagle.gateway.dbf.path}
+				unzip -o  /tmp/market-dbf.zip -d ${eagle.home}
+				chmod +x ${eagle.gateway.dbf.path}/start-eagle-gateway-dbf.sh
+				</shell>
+		</step>
+	</workflow>
+</job>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Strom集群重启 -->
+<job name="redis_cache_restart" description="restart redis cache server">
+	<workflow>
+		<step name="restart" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="redis-cache"/>
+				pkill -9 -f redis
+				
+				cd /usr/local/redis/conf
+				rm -rf redis-cache.conf redis-user-slave.conf sentinel.conf
+				cp /usr/local/redis/confbak/redis-cache.conf .
+				cp /usr/local/redis/confbak/redis-user-slave.conf .
+                cp /usr/local/redis/confbak/sentinel.conf .
+                
+				cd /usr/local/redis/bin
+				nohup ./redis-server /usr/local/redis/conf/redis-cache.conf
+				nohup ./redis-server /usr/local/redis/conf/redis-user-slave.conf
+				nohup ./redis-server /usr/local/redis/conf/sentinel.conf --sentinel
+		</step>
+	</workflow>
+</job>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 部署eagle-backbw-storm.jar并重启Storm -->
+<job name="storm_deploy" description="deploy storm and restart">
+	<workflow>
+	    <step includeJob="storm_stop" />
+	    <step includeJob="storm_upload" />
+	    <step includeJob="storm_start" />
+	</workflow>
+</job>

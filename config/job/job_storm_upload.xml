@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 上传eagle-backbw-storm.jar文件到服务器 -->
+<job name="storm_upload" description="upload storm">
+	<workflow>
+		<step name="upload_stormjar"
+			class="com.linkstec.raptor.eagle.tool.step.UploadStepExecutor" description="上传Storm Jar文件到服务器">
+			<server-ref name="storm-nimbus" />
+			<upload srcFile="${workspace.path}/eagle-backgw-stream.jar"  destPath="${storm.work.path}"  saveName=""  compress="false"/>
+		</step>
+	</workflow>
+</job>
