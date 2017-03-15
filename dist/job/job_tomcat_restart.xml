@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Tomcat服务器重启 -->
-<job name="tomcat_restart" description="restart tomcate">
-	<workflow>
-		<step includeJob="tomcat_stop" />
-	    <step includeJob="tomcat_start" />
-	</workflow>
-</job>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- 深证V5行情网关并重启JOB -->
-<job name="gateway_step_deploy" description="deploy and restart step_getway ">
-	<workflow>
-	    <step includeJob="gateway_step_stop" />
-	    <step includeJob="gateway_step_upload" />
-	    <step includeJob="gateway_step_start" />
-	</workflow>
-</job>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- 部署War文件到JbossWildfly服务器 -->
-<job name="wildfly_deploy" description="wildfly deploy and restart">
-	<workflow>
-	    <step includeJob="wildfly_stop" />
-	    <step includeJob="wildfly_upload" />
-	    <step includeJob="wildfly_start" />
-	</workflow>
-</job>

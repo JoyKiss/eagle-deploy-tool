@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- 部署war文件并重启tomcate -->
-<job name="tomcat_deploy" description="deploy tomcate and restart">
-	<workflow>
-	    <step includeJob="tomcat_stop" />
-	    <step includeJob="tomcat_upload" />
-	    <step includeJob="tomcat_start" />
-	</workflow>
-</job>
