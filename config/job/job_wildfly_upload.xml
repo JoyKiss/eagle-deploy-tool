@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 上传War文件到Wildfly服务器 -->
+<job name="wildfly_upload" description="wildfly upload">
+	<workflow>
+	    <step name="delete_olderfiles" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="wildfly1,wildfly2"/>
+				<shell>cd ${wildfly.deployment.path}
+				rm -rf eagle*
+				touch eagle-backgw-batch.war.deployed
+				touch eagle-frontap.war.deployed
+				</shell>
+		</step>
+		<step name="upload_war"
+			class="com.linkstec.raptor.eagle.tool.step.UploadStepExecutor" description="上传war文件">
+			<server-ref name="wildfly1,wildfly2"/>
+			<upload srcFile="${workspace.path}/eagle-backgw-batch.war"  destPath="${wildfly.deployment.path}"  saveName="" compress="false"/>
+			<upload srcFile="${workspace.path}/eagle-frontap.war"  destPath="${wildfly.deployment.path}"  saveName="" compress="false"/>
+		</step>
+	</workflow>
+</job>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 行情DBF网关重启JOB -->
+<job name="gateway_dbf_restart" description="dbf_getway restart">
+	<workflow>
+	    <step includeJob="gateway_dbf_stop" />
+	    <step includeJob="gateway_dbf_start" />
+	</workflow>
+</job>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vertx 重新启动 -->
+<job name="vertx_restart" description="vertx restart">
+	<workflow>
+		<step includeJob="vertx_stop" />
+	    <step includeJob="vertx_start" />
+	</workflow>
+</job>

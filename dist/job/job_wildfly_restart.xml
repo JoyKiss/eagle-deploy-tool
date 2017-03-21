@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Wildfly服务器重启 -->
+<job name="wildfly_restart" description="Wildfly restart">
+	<workflow>
+		<step includeJob="wildfly_stop" />
+	    <step includeJob="wildfly_start" />
+	</workflow>
+</job>

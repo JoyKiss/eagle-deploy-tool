@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n" />
+		</layout>
+
+		<!--限制输出级别 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="ERROR" />
+			<param name="LevelMin" value="TRACE" />
+		</filter>
+	</appender>
+
+	<appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/eagle-deploy-tools.log" />
+		<param name="Append" value="true" />
+		<!-- 设置文件大小 -->
+		<param name="MaxFileSize" value="1MB" />
+		<!-- 设置文件备份 -->
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n" />
+		</layout>
+	</appender>
+
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+
+
+</log4j:configuration>   

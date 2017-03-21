@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Strom集群重启 -->
+<job name="redis_pubsub_restart" description="restart redis pubsub server">
+	<workflow>
+		<step name="restart" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="redis-pubsub"/>
+			    pkill -9 -f redis
+				
+				cd /usr/local/redis/conf
+				rm -rf redis-pubsub.conf redis-cache-slave.conf sentinel.conf
+				cp /usr/local/redis/confbak/redis-pubsub.conf .
+				cp /usr/local/redis/confbak/redis-user-cache.conf .
+                cp /usr/local/redis/confbak/sentinel.conf .
+                
+				cd /usr/local/redis/bin
+				nohup ./redis-server /usr/local/redis/conf/redis-pubsub.conf
+				nohup ./redis-server /usr/local/redis/conf/redis-cache-slave.conf
+				nohup ./redis-server /usr/local/redis/conf/sentinel.conf --sentinel
+		</step>
+	</workflow>
+</job>

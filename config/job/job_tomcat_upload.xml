@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 上传war文件到服务器 -->
+<job name="tomcat_upload" description="tomcat upload">
+	<workflow>
+		<step name="delete_oldwar" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="tomcat1,tomcat2"/>
+				<shell>cd ${tomcat.webapps.path}
+rm -rf eagle*</shell>
+		</step>
+		<step name="uploadwar"
+			class="com.linkstec.raptor.eagle.tool.step.UploadStepExecutor" description="上传war文件到服务器">
+			<server-ref name="tomcat1,tomcat2" />
+			<upload srcFile="${workspace.path}/eagle-backgw-batch.war"  destPath="${tomcat.webapps.path}" />
+			<upload srcFile="${workspace.path}/eagle-frontap.war"  destPath="${tomcat.webapps.path}" />
+		</step>
+	</workflow>
+</job>

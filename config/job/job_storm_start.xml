@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Strom集群启动 -->
+<job name="storm_start" description="start storm">
+	<workflow>
+		<step name="startZookeeper" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="storm-nimbus,storm-worker1,storm-worker2"/>
+				<shell>zkServer.sh start</shell>
+		</step>
+
+		<step name="showZookeeperStatus" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="storm-nimbus,storm-worker1,storm-worker2"/>
+				<shell>zkServer.sh status</shell>
+		</step>
+
+		<step name="startNimbus" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="storm-nimbus"/>
+				<shell>nohup storm nimbus &gt; /dev/null &amp;
+					nohup storm ui &gt; /dev/null &amp;
+					ps -ef |grep nimbus
+					ps -ef |grep ui
+				</shell>
+		</step>
+
+		<step name="startSupervisor" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="storm-worker1,storm-worker2"/>
+				<shell>nohup storm supervisor &gt; /dev/null &amp;
+ps -ef |grep supervisor
+				</shell>
+		</step>
+
+		<step name="startTopology" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="storm-nimbus"/>
+				<shell>cd /usr/local/eagle/storm/
+./start.sh
+				</shell>
+		</step>
+	</workflow>
+</job>

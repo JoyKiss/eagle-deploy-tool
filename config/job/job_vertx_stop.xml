@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 停止vertx -->
+<job name="vertx_stop" description="vertx stop">
+	<workflow>
+	    <step name="stop_vertx" class="com.linkstec.raptor.eagle.tool.step.ShellStepExecutor">
+			<server-ref name="vertx1,vertx2"/>
+				<shell>pkill -9 -f vertx</shell>
+		</step>
+	</workflow>
+</job>
